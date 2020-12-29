@@ -1,0 +1,33 @@
+{
+  "name": "babel-plugin-tailwind-dark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "babel src --out-dir lib --watch",
+    "build": "rm -rf lib && babel src --out-dir lib",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wowlusitong/babel-plugin-tailwind-dark.git"
+  },
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "tailwind",
+    "dark",
+    "react"
+  ],
+  "author": "Sitong Lu <wowlusitong@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wowlusitong/babel-plugin-tailwind-dark/issues"
+  },
+  "homepage": "https://github.com/wowlusitong/babel-plugin-tailwind-dark#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11"
+  }
+}
