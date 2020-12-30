@@ -35,7 +35,7 @@ export default function({types: t}) {
               transform(node.expression)
               break;
             case 'StringLiteral':
-              node.value += ` ${transformClassNames(node.value)}`.trim();
+              node.value += ` ${transformClassNames(node.value)}`;
               break;
             case 'BinaryExpression':
               const { left, right } = node;
