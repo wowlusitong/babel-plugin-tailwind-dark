@@ -29,20 +29,33 @@ export default function({types: t}) {
           return '';
         }
 
+        function transform(node) {
+          switch (node.type) {
+            case 'JSXExpressionContainer':
+              transform(node.expression)
+              break;
+            case 'StringLiteral':
+              node.value += ` ${transformClassNames(node.value)}`.trim();
+              break;
+            case 'BinaryExpression':
+              const { left, right } = node;
+              transform(left);
+              transform(right);
+              break;
+            case 'TemplateLiteral':
+              node.quasis.forEach(v => transform(v))
+              break;
+            case 'TemplateElement':
+              node.value.cooked = `${transformClassNames(node.value.cooked)} ${node.value.cooked}`
+              break;
+          }
+        }
+
         path.node.openingElement.attributes.forEach(attribute => {
           if (t.isJSXAttribute(attribute) && attribute.name.name === 'className') {
-            switch (attribute.value.type) {
-              case 'JSXExpressionContainer': 
-                attribute.value.expression.quasis.forEach(node => {
-                  node.value.cooked = `${transformClassNames(node.value.cooked)} ${node.value.cooked}`
-                })
-              break;
-              case 'StringLiteral': 
-                attribute.value.value += ` ${transformClassNames(attribute.value.value)}`;
-              break;
-            }
+            transform(attribute.value)
           }
-        })
+        });
       }
     }
   }
