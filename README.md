@@ -28,6 +28,9 @@ Add plugin in your .babelrc with the custom dark option:
 }
 ```
 
+[Enable dark mode in tailwind](https://tailwindcss.com/docs/dark-mode)
+
+
 ### Example
 
 Transforms
