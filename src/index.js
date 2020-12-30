@@ -46,7 +46,7 @@ export default function({types: t}) {
               node.quasis.forEach(v => transform(v))
               break;
             case 'TemplateElement':
-              node.value.cooked = `${transformClassNames(node.value.cooked)} ${node.value.cooked}`
+              node.value.cooked = ` ${transformClassNames(node.value.cooked)} ${node.value.cooked}`
               break;
           }
         }
