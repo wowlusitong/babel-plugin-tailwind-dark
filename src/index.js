@@ -14,7 +14,7 @@ export default function({types: t}) {
         }
 
         path.node.openingElement.attributes.forEach(attribute => {
-          if (t.isJSXAttribute(attribute) && attribute.name.name === 'className') {
+          if (t.isJSXAttribute(attribute) && attribute.name.name === 'className' && attribute.value.value) {
             const classNames = attribute.value.value.trim().split(' ');
             const userDarkClassNamePrefix = classNames.filter(v => v.includes('dark:')).map(v => v.replace(/-.+|dark:/g, ''))
 
