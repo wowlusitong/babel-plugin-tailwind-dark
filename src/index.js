@@ -14,7 +14,7 @@ export default function({types: t}) {
         }
 
         path.node.openingElement.attributes.forEach(attribute => {
-          if (attribute.name.name === 'className') {
+          if (t.isJSXAttribute(attribute) && attribute.name.name === 'className') {
             const classNames = attribute.value.value.trim().split(' ');
             const intersection = classNames.filter(v => v.includes('dark:') ? false : rawClassNames.includes(v.replace(/.+:/, '')));
             
