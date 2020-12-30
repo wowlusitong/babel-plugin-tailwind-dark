@@ -16,10 +16,17 @@ export default function({types: t}) {
         path.node.openingElement.attributes.forEach(attribute => {
           if (t.isJSXAttribute(attribute) && attribute.name.name === 'className') {
             const classNames = attribute.value.value.trim().split(' ');
-            const intersection = classNames.filter(v => v.includes('dark:') ? false : rawClassNames.includes(v.replace(/.+:/, '')));
-            
-            if (intersection.length) {
-              const darkClassNames = intersection.map(toDarkClassName).join(' ');
+            const userDarkClassNamePrefix = classNames.filter(v => v.includes('dark:')).map(v => v.replace(/-.+|dark:/g, ''))
+
+            const filterClassNames = classNames.filter(v => {
+              if (v.includes('dark:') || userDarkClassNamePrefix.includes(v.replace(/-.+/, ''))) {
+                return false;
+              }
+              return rawClassNames.includes(v.replace(/.+:/, ''));
+            });
+
+            if (filterClassNames.length) {
+              const darkClassNames = filterClassNames.map(toDarkClassName).join(' ');
               attribute.value.value += ` ${darkClassNames}`;
             }
           }
