@@ -45,3 +45,20 @@ to
   <h1 className="text-gray-900 dark:text-white">Dark mode is here!</h1>
 </div>
 ```
+
+### Production
+
+If purge is enabled, you need add dark classnames to the [safelist](https://purgecss.com/safelisting.html#specific-selectors)
+
+```js
+// tailwind.config.js
+module.exports = {
+  purge: {
+    content: ['./src/**/*.{js,ts,jsx,tsx}'],
+    options: {
+      safelist: ['dark:bg-gray-800', 'dark:text-white'],
+    }
+  },
+}
+```
+
