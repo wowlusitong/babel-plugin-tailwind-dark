@@ -2,11 +2,6 @@
 
 A Babel plugin to add custom dark classes when compiling your code using Babel.
 
-### Requirements
-
-- [tailwind 2](https://tailwindcss.com/docs/dark-mode)
-- [React](https://reactjs.org/)
-
 ### Usage
 
 Install the plugin first:
@@ -32,6 +27,8 @@ Add plugin in your .babelrc with the custom dark option:
 
 
 ### Example
+
+[Example repo](https://github.com/wowlusitong/babel-plugin-tailwind-dark-example)
 
 Transforms
 ```js
@@ -61,4 +58,9 @@ module.exports = {
   },
 }
 ```
+
+### Requirements
+
+- [tailwind 2](https://tailwindcss.com/docs/dark-mode)
+- [React](https://reactjs.org/)
 
