@@ -1,6 +1,6 @@
 # babel-plugin-tailwind-dark
 
-A Babel plugin to add custom dark classes when compiling your code using Babel.
+A Babel plugin to add custom dark class when compiling your code using Babel.
 
 ### Usage
 
